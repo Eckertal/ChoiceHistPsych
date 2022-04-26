@@ -11,7 +11,7 @@ library(car)
 data_aud <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//Data//Exp1_auditory//exp1_model1_auditory.csv")
 
 # 1. MODEL WITHOUT RANDOM SLOPES
-patsy_noRS <- 'response ~ (1|sbj_id) + (1|block:sbj_id) + target_z + stimulus_z + stim_1_z + cue_z * PPS_z * block_type + resp_1_z * PPS_z * block_type_z'
+patsy_noRS <- 'response ~ (1|sbj_id) + (1|block:sbj_id) + target_z + stimulus_z + stim_1_z + cue_z * PPS_z * block_type_z + resp_1_z * PPS_z * block_type_z'
 
 
 model_aud_noRS <- glmer(patsy_noRS, data=data_aud, 

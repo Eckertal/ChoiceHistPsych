@@ -1,0 +1,45 @@
+Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+ Family: binomial  ( logit )
+Formula: response ~ (1 | sbj_id) + target_z + diff_z + stim_1_z + prev_diff_z *      resp_1_z + resp_1_z * PPS_z * block_type_z + cue_z * PPS_z *  
+    block_type_z
+   Data: data_aud
+Control: glmerControl(optimizer = "optimx", optCtrl = list(method = "nlminb"))
+
+     AIC      BIC   logLik deviance df.resid 
+ 41672.0  41827.9 -20818.0  41636.0    42583 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.6830 -0.5050 -0.2854  0.5073  3.6007 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ sbj_id (Intercept) 0.1006   0.3173  
+Number of obs: 42601, groups:  sbj_id, 113
+
+Fixed effects:
+                              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                 -0.0059964  0.0339999  -0.176 0.860008    
+target_z                     1.3392454  0.0142323  94.099  < 2e-16 ***
+diff_z                      -0.0751518  0.0123753  -6.073 1.26e-09 ***
+stim_1_z                    -0.0276954  0.0163362  -1.695 0.090011 .  
+prev_diff_z                 -0.0034894  0.0073326  -0.476 0.634166    
+resp_1_z                     0.0180112  0.0203098   0.887 0.375173    
+PPS_z                        0.0114885  0.0322583   0.356 0.721734    
+block_type_z                -0.0002007  0.0123133  -0.016 0.986994    
+cue_z                        0.1954734  0.0135653  14.410  < 2e-16 ***
+prev_diff_z:resp_1_z         0.0481320  0.0074939   6.423 1.34e-10 ***
+resp_1_z:PPS_z              -0.0642011  0.0123016  -5.219 1.80e-07 ***
+resp_1_z:block_type_z       -0.0203541  0.0124858  -1.630 0.103064    
+PPS_z:block_type_z          -0.0022206  0.0122413  -0.181 0.856052    
+PPS_z:cue_z                 -0.0450982  0.0123089  -3.664 0.000248 ***
+block_type_z:cue_z           0.0329036  0.0124770   2.637 0.008361 ** 
+resp_1_z:PPS_z:block_type_z  0.0057902  0.0122664   0.472 0.636900    
+PPS_z:block_type_z:cue_z     0.0104605  0.0122660   0.853 0.393768    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+optimizer (optimx) convergence code: 0 (OK)
+Parameters or bounds appear to have different scalings.
+  This can cause poor performance in optimization. 
+  It is important for derivative free methods like BOBYQA, UOBYQA, NEWUOA.
+

@@ -5,36 +5,32 @@ library(MuMIn)
 library(optimx)
 
 ################################################################################
-### EASY
+### AUDITORY
 
 # read data - auditory
-data_aud_easy <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//revision_SB1//supplementary_data//exp1_precedingTrialEasy.csv")
+data_aud_easy <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//Data//Exp1_auditory//exp1_easyOnly.csv")
 
 # read data - visual
-data_vis_easy <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//revision_SB1//supplementary_data//exp2_precedingTrialEasy.csv")
+data_vis_easy <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//Data//Exp2_visual//exp2_easyOnly.csv")
 
 # set up model on auditory data...
 # patsy auditory
-patsy_aud <- 'response ~ (1|sbj_id) + target_z + stimulus_z + (1|block:sbj_id) + cue_z * PPS_z * block_type + stim_1_z + resp_1_z * PPS_z * block_type_z + cue_z*resp_1_z*PPS_z'
-
-# patsy for auditory neutral blocks only
-#patsy_aud <- 'response_z ~ (1|sbj_id) + target_z + stimulus_z + cue_z * PPS_z + stim_1_z + resp_1_z * PPS_z'
+patsy_aud <- 'response ~ (1|sbj_id) + target_z + diff_z + stim_1_z + resp_1_z*PPS_z + prev_diff_z*resp_1_z + cue_z*PPS_z '
 
 model1_aud_easy <- glmer(patsy_aud, data=data_aud_easy, 
                     family=binomial('logit'), 
                     control=glmerControl(optimizer='optimx', optCtrl=list(method='nlminb')))
 
 # save model in summary text file for later manip. in python
-sink('exp1_precededEasy.txt')
+sink('exp1_fits_onlyEasy.txt')
 print(summary(model1_aud_easy))
 sink()
 
-# set up model on visual data... 
+###############################################################################
+# VISUAL EXPERIMENT
 # patsy visual
-patsy_vis <- 'response ~ (1|sbj_id) + target_z + coherence_z + (1|Block:sbj_id) + cue_z * PPS_z * block_type + stim_1_z + resp_1_z * PPS_z * block_type_z + cue_z*resp_1_z*PPS_z'
+patsy_vis <- 'response ~ (1|sbj_id) + (1|Block:sbj_id) + target_z + coherence_z + stim_1_z + resp_1_z + prev_coh_z*resp_1_z + cue_z*PPS_z*block_type + resp_1_z*PPS_z*block_type_z'
 
-# patsy visual, neutral blocks only
-#patsy_vis <- 'response ~ (1|sbj_id) + target + coherence + cue * PPS_z + stim_1 + resp_1 * PPS_z'
 
 model1_vis_easy <- glmer(patsy_vis, data=data_vis_easy,
                     family=binomial('logit'),
@@ -42,7 +38,7 @@ model1_vis_easy <- glmer(patsy_vis, data=data_vis_easy,
 
 
 # save model summary in text file
-sink('exp2_precededEasy.txt')
+sink('exp2_fits_onlyEasy.txt')
 print(summary(model1_vis_easy))
 sink()
 
@@ -63,7 +59,7 @@ model1_aud_hard <- glmer(patsy_aud, data=data_aud_hard,
                     control=glmerControl(optimizer='optimx', optCtrl=list(method='nlminb')))
 
 # save model in summary text file for later manip. in python
-sink('exp1_precededHard.txt')
+sink('exp1_fit_hardOnly.txt')
 print(summary(model1_aud_hard))
 sink()
 
@@ -76,6 +72,6 @@ model1_vis_hard <- glmer(patsy_vis, data=data_vis_hard,
 
 
 # save model summary in text file
-sink('exp2_precededHard.txt')
+sink('exp2_fit_hardOnly.txt')
 print(summary(model1_vis_hard))
 sink()

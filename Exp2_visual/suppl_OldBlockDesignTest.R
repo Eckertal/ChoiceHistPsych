@@ -9,7 +9,7 @@ data_vis <- read.csv("C://Users//annae//Desktop//ChoiceHistory_Psych//Data//Exp2
 
 
 # patsy visual
-patsy_vis <- 'response ~ (1|sbj_id) + target_z + coherence_z + (1|Block:sbj_id) + cue_z * PPS_z * block_type + stim_1_z * PPS_z + resp_1_z * PPS_z * block_type_z + cue_z*resp_1_z*PPS_z + old_z'
+patsy_vis <- 'response ~ (1|sbj_id) + (1|Block:sbj_id) + target_z + coherence_z + stim_1_z + prev_coh_z*resp_1_z + cue_z*PPS_z*block_type + resp_1_z*PPS_z*block_type_z + old_z'
 # patsy visual, neutral blocks only
 #patsy_vis <- 'response ~ (1|sbj_id) + target + coherence + cue * PPS_z + stim_1 + resp_1 * PPS_z'
 

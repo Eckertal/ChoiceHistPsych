@@ -1,42 +1,39 @@
 Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
  Family: binomial  ( logit )
-Formula: response ~ (1 | sbj_id) + (1 | Block:sbj_id) + target_z + coherence_z +      stim_1_z + prev_coh_z * resp_1_z + resp_1_z * PPS_z * block_type_z +  
-    cue_z * PPS_z * block_type_z
+Formula: response ~ (1 | sbj_id) + (1 | Block:sbj_id) + target_z + coherence_z +      stim_1_z + resp_1_z * PPS_z * block_type_z + cue_z * PPS_z *      block_type_z
    Data: data_vis
 Control: glmerControl(optimizer = "optimx", optCtrl = list(method = "nlminb"))
 
      AIC      BIC   logLik deviance df.resid 
- 34451.2  34609.8 -17206.6  34413.2    31068 
+ 34482.8  34624.7 -17224.4  34448.8    31070 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--4.1389 -0.6210  0.2750  0.6361  3.2162 
+-4.1992 -0.6189  0.2775  0.6363  3.2438 
 
 Random effects:
  Groups       Name        Variance Std.Dev.
- Block:sbj_id (Intercept) 0.06332  0.2516  
- sbj_id       (Intercept) 0.17811  0.4220  
+ Block:sbj_id (Intercept) 0.06533  0.2556  
+ sbj_id       (Intercept) 0.18229  0.4270  
 Number of obs: 31087, groups:  Block:sbj_id, 323; sbj_id, 41
 
 Fixed effects:
                               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 -0.0035455  0.0845218  -0.042  0.96654    
-target_z                     0.8125084  0.0151544  53.615  < 2e-16 ***
-coherence_z                 -0.0380967  0.0132632  -2.872  0.00407 ** 
-stim_1_z                    -0.0166177  0.0160955  -1.032  0.30186    
-prev_coh_z                  -0.0803235  0.0756700  -1.061  0.28846    
-resp_1_z                    -0.2336689  0.0557568  -4.191 2.78e-05 ***
-PPS_z                        0.0068037  0.0693115   0.098  0.92180    
-block_type_z                 0.0083558  0.0191129   0.437  0.66198    
-cue_z                        0.4688205  0.0143840  32.593  < 2e-16 ***
-prev_coh_z:resp_1_z         -0.4715116  0.0798618  -5.904 3.55e-09 ***
-resp_1_z:PPS_z              -0.0724152  0.0137281  -5.275 1.33e-07 ***
-resp_1_z:block_type_z       -0.0379189  0.0135214  -2.804  0.00504 ** 
-PPS_z:block_type_z           0.0259487  0.0194989   1.331  0.18326    
-PPS_z:cue_z                  0.0982030  0.0136987   7.169 7.57e-13 ***
-block_type_z:cue_z          -0.0089856  0.0134374  -0.669  0.50368    
-resp_1_z:PPS_z:block_type_z  0.0303112  0.0137005   2.212  0.02694 *  
-PPS_z:block_type_z:cue_z    -0.0004166  0.0136668  -0.030  0.97568    
+(Intercept)                  0.0500441  0.0695182   0.720  0.47160    
+target_z                     0.8116366  0.0151423  53.600  < 2e-16 ***
+coherence_z                 -0.0383344  0.0132443  -2.894  0.00380 ** 
+stim_1_z                    -0.0434301  0.0154402  -2.813  0.00491 ** 
+resp_1_z                     0.0835307  0.0151119   5.527 3.25e-08 ***
+PPS_z                        0.0070522  0.0700941   0.101  0.91986    
+block_type_z                 0.0083579  0.0192619   0.434  0.66435    
+cue_z                        0.4680980  0.0143728  32.568  < 2e-16 ***
+resp_1_z:PPS_z              -0.0718918  0.0137214  -5.239 1.61e-07 ***
+resp_1_z:block_type_z       -0.0378438  0.0135160  -2.800  0.00511 ** 
+PPS_z:block_type_z           0.0267205  0.0196512   1.360  0.17391    
+PPS_z:cue_z                  0.0978871  0.0136923   7.149 8.74e-13 ***
+block_type_z:cue_z          -0.0098053  0.0134315  -0.730  0.46538    
+resp_1_z:PPS_z:block_type_z  0.0304802  0.0136942   2.226  0.02603 *  
+PPS_z:block_type_z:cue_z     0.0004998  0.0136603   0.037  0.97081    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 optimizer (optimx) convergence code: 0 (OK)

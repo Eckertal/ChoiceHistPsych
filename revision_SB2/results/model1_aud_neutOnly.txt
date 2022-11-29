@@ -1,0 +1,43 @@
+Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+ Family: binomial  ( logit )
+Formula: response ~ (1 | sbj_id) + (1 | block:sbj_id) + target_z + evidence_z +      stim_1_z + resp_1_z * PPS_z + cue_z * PPS_z
+   Data: data_aud
+Control: glmerControl(optimizer = "optimx", optCtrl = list(method = "nlminb"))
+
+     AIC      BIC   logLik deviance df.resid 
+ 20521.2  20608.8 -10249.6  20499.2    21273 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.7673 -0.4859 -0.2690  0.4934  3.7190 
+
+Random effects:
+ Groups       Name        Variance Std.Dev.
+ block:sbj_id (Intercept) 0.03898  0.1974  
+ sbj_id       (Intercept) 0.11380  0.3373  
+Number of obs: 21284, groups:  block:sbj_id, 687; sbj_id, 113
+
+Fixed effects:
+               Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    -0.01513    0.03739  -0.405  0.68572    
+target_z        1.38775    0.01983  69.977  < 2e-16 ***
+evidence_z      0.04425    0.01767   2.504  0.01228 *  
+stim_1_z       -0.01677    0.02271  -0.738  0.46024    
+resp_1_z        0.05428    0.02316   2.343  0.01911 *  
+PPS_z           0.01050    0.03737   0.281  0.77867    
+cue_z           0.21114    0.01926  10.961  < 2e-16 ***
+resp_1_z:PPS_z -0.06044    0.01775  -3.406  0.00066 ***
+PPS_z:cue_z    -0.03507    0.01768  -1.983  0.04733 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) trgt_z evdnc_ stm_1_ rsp_1_ PPS_z  cue_z  r_1_:P
+target_z    -0.011                                                 
+evidence_z   0.001  0.020                                          
+stim_1_z    -0.002  0.016  0.002                                   
+resp_1_z     0.004  0.006 -0.014 -0.624                            
+PPS_z       -0.002  0.004  0.000  0.001 -0.002                     
+cue_z        0.004 -0.367  0.003  0.091 -0.047  0.001              
+rsp_1_:PPS_  0.000 -0.036  0.009  0.004 -0.013  0.013  0.001       
+PPS_z:cue_z  0.002 -0.021  0.000  0.000 -0.011 -0.007 -0.003  0.035
